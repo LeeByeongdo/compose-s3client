@@ -44,8 +44,8 @@ fun App() {
             "Loading..."
         }
 
-        var accessKey by remember { mutableStateOf("AKIATMR46M7X3NTD5TFK") }
-        var secretKey by remember { mutableStateOf("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") }
+        var accessKey by remember { mutableStateOf("") }
+        var secretKey by remember { mutableStateOf("") }
         var buckets by remember { mutableStateOf(listOf<Bucket>()) }
         Row {
             Column {
