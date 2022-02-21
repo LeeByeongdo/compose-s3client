@@ -2,6 +2,7 @@
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.desktop.ui.tooling.preview.Preview
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -9,8 +10,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import com.amazonaws.auth.AWSStaticCredentialsProvider
 import com.amazonaws.auth.BasicAWSCredentials
@@ -49,9 +53,12 @@ fun App() {
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
                 modifier = Modifier.padding(100.dp)
-                    .fillMaxWidth()
+                    .width(500.dp)
                     .align(Alignment.Center)
             ) {
+                Image(painter = painterResource(resourcePath = "purples3-logos.jpeg")
+                    , "LOGO",
+                modifier = Modifier.height(300.dp).align(Alignment.CenterHorizontally))
                 OutlinedTextField(
                     modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(),
                     maxLines = 1,
@@ -129,7 +136,7 @@ fun fetchObjects(accessKey: String, secretKey: String, bucketName: String): List
 }
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
+    Window(state = WindowState(size = DpSize(1000.dp, 750.dp)), onCloseRequest = ::exitApplication) {
         App()
     }
 }
